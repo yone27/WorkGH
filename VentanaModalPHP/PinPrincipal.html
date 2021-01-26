@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Ventana modal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="contenedor">
+        <a href="#openmodal" class="open">Abrir Ventana</a>
+        <section id="openmodal" class="modalDialog">
+            <section class="modal">
+                <div class="divpin">
+                    <h1>PIN</h1>
+                </div>
+                <div class="centrarObjets"><input type="password" name="pass" id="pass" pattern=".{4,}" maxlength="4"></div>
+                <!--<div class="passwrd"> <p class="codpin"> * _ _ _</p> </div>-->
+                <div>
+                    <table class="centrarObjets">
+                        <tbody>
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                            <tr>
+                                <td> <input value=" 1 " onclick="number(1)" type="button" class="botones"></td>
+                                <td> <input value=" 2 " onclick="number(2)" type="button" class="botones"></td>
+                                <td> <input value=" 3 " onclick="number(3)" type="button" class="botones"></td>
+                            </tr>
+                            <tr>
+                                <td> <input value=" 4 " onclick="number(4)" type="button" class="botones"></td>
+                                <td> <input value=" 5 " onclick="number(5)" type="button" class="botones"></td>
+                                <td> <input value=" 6 " onclick="number(6)" type="button" class="botones"></td>
+                            </tr>
+                            <tr>
+                                <td> <input value=" 7 " onclick="number(7)" type="button" class="botones"></td>
+                                <td> <input value=" 8 " onclick="number(8)" type="button" class="botones"></td>
+                                <td> <input value=" 9 " onclick="number(9)" type="button" class="botones"></td>
+                            </tr>
+                            <td></td>
+                            <td><input value=" 0 " onclick="number(0)" type="button" class="botones"></td>
+                            <td> <input type="image" name="botondeenvio" src="img/iconoborrar.png" class="imgErase"></td>
+                            <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <a class="wordsFM" href="">Olvido de Clave?</a>
+                    <div class="centrarObjets">
+                        <a href="#close" class="button"> Aceptar </a>
+                    </div>
+                    <a class="wordsFM " href="Register.php">Registro</a>
+                </div>
+            </section>
+        </section>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Xatoxi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="encabezado encabezado-home">
+            <img class="logo" src="img/home.png" alt="">
+            <img class="logo" src="img/logo.png">
+        </div>
+    </header>
+    <main class="wrapper">
+        <section class="grid-3">
+            <article class="grid-item grid-item-Opc-2" \="">
+                <h1>Billetera</h1>
+            </article>
+            <article class="grid-item grid-item-Opc-2">
+                <h1>Encomienda</h1>
+            </article>
+            <article class="grid-item grid-item-Opc-2">
+                <h1>Transferencia</h1>
+            </article>
+        </section>
+        <section class=" grid-row marginSect grid-2">
+            <article class="grid-item-no-border">
+                <div class="grid-item-no-border grid-item-2">
+                    <label for="amount" class="font-Bold">Monto</label>
+                    <input type="number" name="" id="amount" pattern="[0-9]+([\.,][0-9]+)?" step=".01" placeholder="0,00">
+                </div>
+            </article>
+            <article class="grid-item-no-border">
+                <div class="grid-item-no-border grid-item-2">
+                    <label for="amount" class="font-Bold">País</label>
+                    <select name="country" id="country" class="select-width">
+                        <option disabled selected>Seleccione</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                    </select>
+                </div>
+            </article>
+            <article class="grid-item-no-border">
+                <div class="grid-item-no-border grid-item-2">
+                    <label for="amount" class="font-Bold">Proveedor</label>
+                    <select name="proveedor" id="proveedor" class="select-width">
+                        <option disabled selected>Seleccione</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                    </select>
+                </div>
+            </article>
+            <article class="grid-item-no-border">
+                <div class="grid-item-no-border grid-item-2">
+                    <label for="amount" class="font-Bold">Moneda</label>
+                    <select name="moneda" id="moneda" class="select-width">
+                        <option disabled selected>Seleccione</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                    </select>
+                </div>
+            </article>
+            <article class="grid-item-no-border">
+                <div class="grid-item-no-border grid-item-2">
+                    <label for="amount" class="font-Bold">Forma de envío</label>
+                    <select name="formEnvio" id="formEnvio" class="select-width">
+                        <option disabled selected>Seleccione</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                    </select>
+                </div>
+            </article>
+            <article class="grid-item-no-border">
+                <div class="grid-item-no-border grid-item-2">
+                    <label for="amount" class="font-Bold">Forma de pago</label>
+                    <select name="formPago" id="formPago" class="select-width">
+                        <option disabled selected>Seleccione</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                    </select>
+                </div>
+            </article>
+        </section>
+
+        <!-- EFECTIVO -->
+
+        <section class="marginSect grid-item-2">
+            <aside>
+                <div class="grid-item-no-border grid-item-2">
+                    <label for="amount" class="font-Bold">Referencia</label>
+                    <input type="text" name="email" id="email" placeholder="0" class="input-radius text-align-left">
+                </div>
+            </aside>
+        </section>
+
+        <!-- Deposito en cuenta -->
+        <section class="marginSect">
+            <aside class="grid-2">
+                <div class="grid-item-no-border grid-item-1">
+                    <label for="amount" class="font-Bold ">Monto a recibir</label>
+                    <input type="text" name="firstName" id="firsName" class="input-radius" disabled>
+                </div>
+                <div class="grid-item-no-border grid-item-1">
+                    <label for="amount" class="font-Bold">Monto</label>
+                    <input type="text" name="SecondName" id="SecondName" class="input-radius" disabled>
+                </div>
+                <div class="grid-item-no-border grid-item-1">
+                    <label for="amount" class="font-Bold">Cta. Receptora</label>
+                    <select name="country" id="country" class="select-width" aria-placeholder="Seleccione">
+                        <option disabled selected>Seleccione</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                        <option value="">algo</option>
+                    </select>
+                </div>
+                <div class="grid-item-no-border grid-item-1">
+                    <label for="amount" class="font-Bold">Referencia</label>
+                    <input type="text" name="secondSurname" id="secondSurname" class="input-radius">
+                </div>
+            </aside>
+        </section>
+
+        <!-- BENEFICIARIO -->
+
+        <div class="section-Titles">
+            <h1 class="titles">BENEFICIARIO</h1>
+        </div>
+
+        <section class="marginSect">
+            <aside class="aside">
+                <select name="beneficiario" id="beneficiario" class="select-width-user select-appearance-user">
+                    <option disabled selected>Seleccione</option>
+                    <option value="">algo</option>
+                    <option value="">algo</option>
+                    <option value="">algo</option>
+                    <option value="">algo</option>
+                    <option value="">algo</option>
+                </select>
+                <button class="btn-contacts btn">
+                    <figure><img src="img/address-book.png" alt=""></figure>
+                </button>
+                <button class="btn-search btn">
+                    <figure><img src="img/search.png" alt=""></figure>
+                </button>
+                <button class="btn-search btn">
+                    <figure><img src="img/plus-square.png" alt=""></figure>
+                </button>
+            </aside>
+
+            <!-- REGISTRAR BENEFICIARIO -->
+            <section class="marginSect">
+                <aside class="grid-2">
+                    <div class="grid-item-no-border grid-item-1">
+                        <label for="amount" class="font-Bold ">Primer nombre</label>
+                        <input type="text" name="firstName" id="firsName" class="input-radius">
+                    </div>
+                    <div class="grid-item-no-border grid-item-1">
+                        <label for="amount" class="font-Bold">Segundo nombre</label>
+                        <input type="text" name="SecondName" id="SecondName" class="input-radius">
+                    </div>
+                    <div class="grid-item-no-border grid-item-1">
+                        <label for="amount" class="font-Bold">Primer apellido</label>
+                        <input type="text" name="firstSurname" id="firstSurname" class="input-radius">
+                    </div>
+                    <div class="grid-item-no-border grid-item-1">
+                        <label for="amount" class="font-Bold">Segundo apellido</label>
+                        <input type="text" name="secondSurname" id="secondSurname" class="input-radius">
+                    </div>
+                    <div class="grid-item-no-border grid-item-1 grid-item-2">
+                        <label for="amount" class="font-Bold">Direccion</label>
+                        <input type="text" name="email" id="email" class="input-text-large input-radius">
+                    </div>
+                    <div class="grid-item-no-border grid-item-1">
+                        <label for="amount" class="font-Bold">Email</label>
+                        <input type="text" name="email" id="email" class="input-radius" placeholder="Ejemplo@gmail.com">
+                    </div>
+                    <div class="grid-item-no-border grid-item-1">
+                        <label for="amount" class="font-Bold">Telefono</label>
+                        <input type="text" name="phone" id="phone" class="input-radius">
+                    </div>
+                    <div class="grid-item-no-border grid-item-1">
+                        <label for="amount" class="font-Bold">Banco</label>
+                        <input type="text" name="bank" id="bank" class="input-radius">
+                    </div>
+                    <div class="grid-item-no-border grid-item-1">
+                        <label for="amount" class="font-Bold">Cuenta</label>
+                        <input type="text" name="account" id="account" class="input-radius">
+                    </div>
+                </aside>
+            </section>
+
+            <section class="grid-section grid-row marginSect">
+                <figure class="figure-img"><img src="img/LOCK.png" alt="" class="img-pin"></figure>
+            </section>
+
+        </section>
+
+    </main>
+    <foote class="main-footer">
+        <div class="pie_pagina">
+            <h6>by XATOXI</h6>
+        </div>
+    </foote>
+</body>
+
+</html>
