@@ -11,10 +11,10 @@
 
    class xpresentationLayer {
 
-      /*=======================================================================
+    /*=======================================================================
     Function: startHtml
     Description: HTML TAG START according to language "lang"
-        Parameters: $lang <--
+    Parameters: $lang <--
     Algorithm:
     Remarks:
     Standarized: 2021/01/18 09:40
@@ -28,7 +28,7 @@
   /*=======================================================================
     Function: endHtml
     Description: HTML TAG END and add the file .js
-        Parameters:
+    Parameters:
     Algorithm:
     Remarks:
     Standarized: 2021/01/18 09:40
@@ -41,7 +41,7 @@
       /*=======================================================================
     Function: buildHead
     Description: HTML Head, rendering "title"
-        Parameters: $title <-- name of App
+    Parameters: $title <-- name of App
     Algorithm:
     Remarks:
     Standarized: 2021/01/18 09:40
@@ -54,7 +54,7 @@
             echo  ' <META name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> ';
             echo  ' <LINK rel="stylesheet" type="text/css" href="css/style.css"> ';            
             echo  ' </HEAD> ';
-    } 
+    }//buildHead
     
     /*=======================================================================
     Function: buildHeaderXatoxi
@@ -121,7 +121,7 @@
     Standarized: 2021/01/18 14:00
     ===================================================================== */
     static function startFirtsSection(){
-      echo '<SECTION class="grid-3">';
+      echo '<SECTION class="grid-3" id="wrapperButtons">';
     } //startFirtsSection
 
     /*=======================================================================
@@ -220,7 +220,6 @@
     Standarized: 2021/01/18 14:00
     ===================================================================== */
     static function buildInputTextCenter($titleLabel, $idInput, $nameInput ,$placeholder=""){
-
       echo '<SECTION class="marginSect grid-item-2">';
       echo '    <ASIDE>';
       echo '        <DIV class="grid-item-no-border grid-item-2">';
@@ -229,7 +228,6 @@
       echo '        </DIV>';
       echo '    </ASIDE>';
       echo '</SECTION>';
-    
     }//buildInputTextCenter
 
 
@@ -241,6 +239,7 @@
                 $id  <-- Contiele el id del objeto html
                 $json <-- Contiele los datos en formato json				
                 $showCol <-- Valor de la columna a mostrar de la BD
+                $event <--
     Algorithm:
     Remarks:
     Standarized: 2021/01/18 14:00
@@ -345,7 +344,7 @@
                 $id  <-- Contiele el id del objeto html
                 $json <-- Contiele los datos en formato json				
                 $showCol <-- Valor de la columna a mostrar de la BD
-                $placeholder <-- Define la mascara o titulo informativo del objeto cuando esta en blanco
+                $event <-- 
     Algorithm:
     Remarks:
     Standarized: 2021/01/19 12:00
@@ -472,7 +471,8 @@
     Function: buildMenuOptionGrid
     Description: Build option with title and image dinamyc
     Parameters: $nameImg <-- Image name
-                $titleOption <-- Option name              
+                $titleOption <-- Option name    
+                $modal <-- Show modal or no.               
     Algorithm:
     Remarks:
     Standarized: 2021/01/19 12:00
@@ -494,10 +494,11 @@
     }//buildMenuOptionGrid
 
     /*=======================================================================
-    Function: buildMenuOptionGrid
+    Function: buildMenuOptionComplete
     Description: Build option with title and image dinamyc
     Parameters: $nameImg <-- Image name
-                $titleOption <-- Option name              
+                $titleOption <-- Option name    
+                $modal <-- Show modal or no.          
     Algorithm:
     Remarks:
     Standarized: 2021/01/19 12:00
@@ -521,8 +522,10 @@
     /*=======================================================================
     Function: buildInputMedium
     Description: Build input size medium
-    Parameters: $nameImg <-- Image name
-                $titleOption <-- Option name              
+    Parameters: $titleLabel <-- Label Name
+                $nameImg <-- Image name
+                $titleOption <-- Option name   
+                $placeholder <-- Name Show Field 
     Algorithm:
     Remarks:
     Standarized: 2021/01/19 12:00
@@ -559,10 +562,13 @@
     }//endAside
 
     /*=======================================================================
-    Function: buildInputMedium
+    Function: buildPhoneComplete
     Description: Build section phones witch country phone, area cod and number (Fields Centers)
-    Parameters: $nameImg <-- Image name
-                $titleOption <-- Option name              
+    Parameters: $name <-- Contiele el nombre del objeto html
+                $id  <-- Contiele el id del objeto html
+                $json <-- Contiele los datos en formato json				
+                $showCol <-- Valor de la columna a mostrar de la BD
+                $placeholder <-- Define la mascara o titulo informativo del objeto cuando esta en blanco              
     Algorithm:
     Remarks:
     Standarized: 2021/01/20 12:00
@@ -583,8 +589,6 @@
         }
     });
     echo '</SELECT>';
-
-
     echo '<SELECT name="'.$name.'" id="'.$id.'" '.$event.' class="select-width">';
       echo '<OPTION disabled selected>Seleccione</OPTION>';                
       array_walk($json, function(&$value, $key)use(&$showCol) {                        
@@ -599,41 +603,49 @@
     echo '      <INPUT type="text" name="firstSurname" id="firstSurname" class="input-radius">';
     echo '  </DIV>';
     echo '</DIV>';
-    }
+    }//buildPhoneComplete
 
     /*=======================================================================
-    Function: buildInputMedium
-    Description: Build section phones witch country phone, area cod and number (Fields Centers)
-    Parameters: $nameImg <-- Image name
-                $titleOption <-- Option name              
+    Function: buildpinTemporal
+    Description: Bild information of pin temporal, without forgot password and register
+    Parameters:            
     Algorithm:
     Remarks:
     Standarized: 2021/01/20 12:00
     ===================================================================== */
-    static function buildpinTemporal($titleLabel, $name,$id,$json,$showCol="",$event=""){
+    static function buildpinTemporal(){
       echo '<P class="resOp"> Usuario creado satisfactoriamente, su PIN de entrada es:</P>';
       echo '<DIV class="centrarObjets">';
       echo '    <P class="font-subtitle">7213</P>';
       echo '    <A href="#close" class="button"> Continuar </A>';
       echo '</DIV>';
-    }//
+    }//buildpinTemporal
+
+    /*=======================================================================
+    Function: startSectionOpt
+    Description: Start section for options 
+    Parameters:   
+    Algorithm:
+    Remarks:
+    Standarized: 2021/01/27 10:10
+    ===================================================================== */
+    static function startSectionOpt(){
+      echo '<SECTION class="grid-2" id="item-container">';
+    }//startSectionOpt
 
     /*=======================================================================
     Function: buildOptionsPrincipal
     Description: Build principal options of the services
-    Parameters: $nameImg <-- Image name
-                $titleOption <-- Option name  
+    Parameters: $titleOption <-- Option name  
                 $data_id <-- Para relacionar con las opciones de buildOptionGrid    
     Algorithm:
     Remarks:
-    Standarized: 2021/01/20:00
+    Standarized: 2021/01/20 10:00
     ===================================================================== */
     static function buildOptionsPrincipal($titleLabel, $data_id =""){
-      echo '<SECTION class="grid-2">';
 		  echo '	<ARTICLE class="grid-item-Opc grid-item-2" data-id="'.$data_id.'">';
 		  echo '		<H1>'.$titleLabel.'</H1>';
 		  echo '	</ARTICLE>';
-      echo '</SECTION>';
     }//buildOptionsPrincipal
 
     /*=======================================================================
@@ -717,7 +729,7 @@
     }//endInputModal
 
     /*=======================================================================
-    Function: startInputModal
+    Function: buildHeaderText
     Description: build header with title without logos
     Parameters:      Transacción Satisfactoria
     Algorithm:
@@ -728,15 +740,16 @@
       echo '<HEADER class="header header-text">';
       echo '  <H1 class="titles">'.$title.'</H1>';
       echo '</HEADER>';
-    }
+    }//buildHeaderText
 
     /*=======================================================================
-    Function: startInputModal
-    Description: build header with title without logos
-    Parameters:      
+    Function: buildSuccessful
+    Description: build section message successful
+    Parameters: $title <-- 
+                $buttonTitle <-- Button Title
     Algorithm:
     Remarks:
-    Standarized: 2021/01/21 10:00
+    Standarized: 2021/01/26 10:00
     ===================================================================== */
     static function buildSuccessful($title, $buttonTitle){
         echo '<DIV class="centrarObjets">';
@@ -744,10 +757,55 @@
         echo '    <H1>'.$title.'</H1>';
         echo '    <BUTTON class="button"> '.$buttonTitle.'</BUTTON>';
         echo '</DIV>';
-    }
+    }//buildSuccessful
 
+    /*=======================================================================
+    Function: startAnimationMenu
+    Description: start the section to animation menu
+    Parameters:      
+    Algorithm:
+    Remarks:
+    Standarized: 2021/01/27 12:00
+    ===================================================================== */
+    static function startAnimationMenu(){
+      echo '<DIV id="wrapper" class="animate animate__fadeOut hidden">';
+    }//startAnimationMenu
+
+    /*=======================================================================
+    Function: endDiv
+    Description: End tag DIV
+    Parameters:      
+    Algorithm:
+    Remarks:
+    Standarized: 2021/01/27 12:00
+    ===================================================================== */
+    static function endDiv(){
+      echo '</DIV>';
+    }//endDiv
+
+    /*=======================================================================
+    Function: startSectionButtos
+    Description: start the section of buttos in X
+    Parameters:      
+    Algorithm:
+    Remarks:
+    Standarized: 2021/01/27 12:00
+    ===================================================================== */
+    static function startSectionButtos(){
+      echo '<SECTION class="grid-3" id="wrapperButtons">';
+    }//startSectionButtos
+
+/*=======================================================================
+    Function: startSectionButtos
+    Description: start the section of buttos in X
+    Parameters:      
+    Algorithm:
+    Remarks:
+    Standarized: 2021/01/27 12:00
+    ===================================================================== */
+    static function startContentSection(){
+      echo '<DIV id="wrapperSections">';
+    }
 
 // buildHead
 } // xpresentationLayer
-
-?>

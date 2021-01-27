@@ -343,7 +343,6 @@ h1 {
 
 .grid-2 {
     display: grid;
-    /* grid: ; */
     grid-template-columns: 1fr 1fr;
     grid-gap: 15px;
 }
@@ -425,7 +424,7 @@ h1 {
 }
 
 .marginSect {
-    margin: 20px;
+    margin: 15px;
 }
 
 .btn {

@@ -7,9 +7,11 @@
 
         xpresentationLayer::startMain();
 
+        xpresentationLayer::startSectionOpt();
         xpresentationLayer::buildOptionsPrincipal("Billetera");
         xpresentationLayer::buildOptionsPrincipal("Encomienda");
         xpresentationLayer::buildOptionsPrincipal("Transferencia");
+        xpresentationLayer::endSection();
         
         xpresentationLayer::endMain();
 
