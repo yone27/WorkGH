@@ -120,7 +120,7 @@
     Remarks:
     Standarized: 2021/01/18 14:00
     ===================================================================== */
-    static function startFirtsSection(){
+    static function onstartFirtsSection(){
       echo '<SECTION class="grid-3" id="wrapperButtons">';
     } //startFirtsSection
 
