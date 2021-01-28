@@ -1,12 +1,21 @@
 <?php
+        error_reporting(0);
         include_once("xpresentationlayer.php");
         xpresentationLayer:: startHtml("esp");
         xpresentationLayer:: buildHead("Xatoxi");
         xpresentationLayer:: buildHeaderXatoxi();
 
+        include_once("xclient.php");
+        $test = new xclient("");
+        
+
+
+
+
+
 
         xpresentationLayer::startMain();
-        xpresentationLayer::startFirtsSection();
+        xpresentationLayer::startFirtsSection();        
         xpresentationLayer::buildOptionGrid("Billetera");
         xpresentationLayer::buildOptionGrid("Encomienda");
         xpresentationLayer::buildOptionGrid("Transferencia");
@@ -14,7 +23,9 @@
 
         xpresentationLayer::startSectionTwoColumns();
         xpresentationLayer::buildInputNumberGrid("Monto", "Amount", "Amount", "0.00");
-        xpresentationLayer::buildSelectJson("País", "Country", "Country", "", "", "", "");
+        $data_json = $test->mgetcountryl();
+        xpresentationLayer::buildSelectJson("País", "Country", "Country", $data_json, "", "", "");
+        $data_json = $test->mgetproviderl();
         xpresentationLayer::buildSelectJson("Proveedor", "Provider", "Provider", "", "", "", "");
         xpresentationLayer::buildSelectJson("Moneda", "Currency", "Currency", "", "", "", "");        
         xpresentationLayer::buildSelectJson("Forma de envío", "SendForm", "SendForm", "", "", "", "");   

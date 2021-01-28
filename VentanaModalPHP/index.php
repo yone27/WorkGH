@@ -1,4 +1,5 @@
 <?php
+
         include_once("xpresentationlayer.php");
         xpresentationLayer:: startHtml("esp");
         xpresentationLayer:: buildHead("Xatoxi");
