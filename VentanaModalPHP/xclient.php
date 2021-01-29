@@ -409,6 +409,27 @@ class xclient
 		return ($result);
 	} // misparty
 
+	private function bgetparty($wsuser, $wspwd, $idlead, $idparty)
+	{
+		$this->updateField($getparty, "wsuser", "WSITALCAMBIO");
+		$this->updateField($getparty, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$this->updateField($getparty, "idlead", $idlead);
+		$this->updateField($getparty, "idlead", $idparty);
+		return $getparty;
+	} // bgetparty
+
+	function mgetparty($idlead, $idparty, $url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$getparty =  $this->bgetparty("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919", $idlead, $idparty);
+		$data["getparty"] = $getparty;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mgetparty
+
 	private function brecv($wsuser, $wspwd, $idparty, $acc, $key, $addr, $bdate)
 	{
 		$this->updateField($recv, "wsuser", "WSITALCAMBIO");

@@ -185,13 +185,17 @@ class xpresentationLayer
     Remarks:
     Standarized: 2021/01/18 14:00
     ===================================================================== */
-  static function buildInputNumberGrid($titleLabel, $idInput, $nameInput, $placeholder = "")
+  static function buildInputNumberGrid($titleLabel, $idInput, $nameInput, $placeholder = "", $onblur = "")
   {
+    if ($onblur != "")
+      $onblur = ' onBlur="' . $onblur . '" ';
+
+
     echo '<ARTICLE class="grid-item-no-border">';
     echo '    <ASIDE>';
     echo '        <DIV class="grid-item-no-border grid-item-2">';
     echo '            <LABEL class="font-Bold">' . $titleLabel . '</LABEL>';
-    echo '            <INPUT type="number" name="' . $nameInput . '" id="' . $idInput . '" pattern="[0-9]+([\.,][0-9]+)?" step=".01" placeholder="' . $placeholder . '">';
+    echo '            <INPUT type="number" name="' . $nameInput . '" id="' . $idInput . '" pattern="[0-9]+([\.,][0-9]+)?" step=".01" placeholder="' . $placeholder . '" ' . $onblur . '>';
     echo '        </DIV>';
     echo '    </ASIDE>';
     echo '</ARTICLE>';
@@ -266,15 +270,13 @@ class xpresentationLayer
     echo '<ASIDE>';
     echo '    <LABEL class="font-Bold">' . $title . '</LABEL>';
     echo '</ASIDE>';
-
     $event = 'onchange="' . $event . '"';
     echo '<ASIDE class="aside">';
+
     echo '<SELECT name="' . $name . '" id="' . $id . '" ' . $event . ' class="select-width">';
     echo '<OPTION disabled selected>Seleccione</OPTION>';
-
     foreach ($test as $value) {
-      print_r($value->name);
-      echo '<OPTION value="' . $value->id . '" selected>' . $value->name . ' </OPTION>';
+      echo '<OPTION value="' . $value->id . '">' . $value->name . ' </OPTION>';
     }
 
     // array_walk($test, function(&$value, $key)use(&$showCol) {                        
@@ -309,8 +311,7 @@ class xpresentationLayer
     echo '<SELECT name="' . $name . '" id="' . $id . '" ' . $event . ' class="select-large">';
     echo '<OPTION disabled selected>Seleccione</OPTION>';
     foreach ($test as $value) {
-      print_r($value->name);
-      echo '<OPTION value="' . $value->id . '" selected>' . $value->name . ' </OPTION>';
+      echo '<OPTION value="' . $value->id . '" >' . $value->name . ' </OPTION>';
     }
     echo '</SELECT>';
     echo '</DIV>';
@@ -383,8 +384,7 @@ class xpresentationLayer
     echo '       <SELECT name="' . $name . '" id="' . $id . '" ' . $event . ' class="select-width-user select-appearance-user">';
     echo '       <OPTION disabled selected>Seleccione</OPTION>';
     foreach ($test as $value) {
-      print_r($value->name);
-      echo '<OPTION value="' . $value->id . '" selected>' . $value->name . ' </OPTION>';
+      echo '<OPTION value="' . $value->id . '">' . $value->name . ' </OPTION>';
     }
     echo '        </SELECT>';
     echo '        <BUTTON class="btn-contacts btn"><figure><img src="img/address-book.png" alt=""></figure></BUTTON>';
@@ -412,8 +412,7 @@ class xpresentationLayer
     echo '       <SELECT name="' . $name . '" id="' . $id . '" ' . $event . ' class="select-width-user select-appearance-user">';
     echo '       <OPTION disabled selected>Seleccione</OPTION>';
     foreach ($test as $value) {
-      print_r($value->name);
-      echo '<OPTION value="' . $value->id . '" selected>' . $value->name . ' </OPTION>';
+      echo '<OPTION value="' . $value->id . '" >' . $value->name . ' </OPTION>';
     }
     echo '        </SELECT>';
     echo '    <BUTTON class="btn-contacts btn">';
@@ -558,7 +557,7 @@ class xpresentationLayer
   static function buildInputMedium($titleLabel, $idInput, $nameInput, $placeholder = "")
   {
     echo '<DIV class="grid-item-no-border grid-item-1">';
-    echo '  <LABEL for="amount" class="font-Bold margin-label">' . $titleLabel . '</LABEL>';
+    echo '  <LABEL class="font-Bold margin-label">' . $titleLabel . '</LABEL>';
     echo '  <INPUT type="text" name="' . $nameInput . '" id="' . $idInput . '" placeholder="' . $placeholder . '" class="input-radius input-medium">';
     echo '</DIV>';
   } //buildInputMedium
@@ -607,25 +606,23 @@ class xpresentationLayer
     $test2 = $jsonArea->list;
 
     echo '<DIV class="grid-item-no-border grid-item-1">';
-    echo '  <LABEL for="amount" class="font-Bold margin-label">' . $titleLabel . '</LABEL>';
+    echo '  <LABEL class="font-Bold margin-label">' . $titleLabel . '</LABEL>';
     echo '  <DIV class="flex-content">';
 
     echo '<SELECT name="' . $name . '" id="' . $id . '" ' . $event . ' class="select-width">';
     echo '<OPTION disabled selected>Seleccione</OPTION>';
     foreach ($test as $value) {
-      print_r($value->name);
-      echo '<OPTION value="' . $value->id . '" selected>' . $value->name . ' </OPTION>';
+      echo '<OPTION value="' . $value->id . '" >' . $value->name . ' </OPTION>';
     }
     echo '</SELECT>';
     echo '<SELECT name="' . $name . '" id="' . $id . '" ' . $event . ' class="select-width">';
     echo '<OPTION disabled selected>Seleccione</OPTION>';
     foreach ($test2 as $value) {
-      print_r($value->name);
-      echo '<OPTION value="' . $value->id . '" selected>' . $value->name . ' </OPTION>';
+      echo '<OPTION value="' . $value->id . '" >' . $value->name . ' </OPTION>';
     }
     echo '</SELECT>';
 
-    echo '      <INPUT type="text" name="firstSurname" id="firstSurname" class="input-radius">';
+    echo '      <INPUT type="text" name="algo" id="firstSurname" class="input-radius">';
     echo '  </DIV>';
     echo '</DIV>';
   } //buildPhoneComplete
@@ -692,7 +689,8 @@ class xpresentationLayer
     echo '<DIV class="divpin">';
     echo '<H1>' . $title . '</H1>';
     echo '</DIV>';
-    echo '<DIV class="centrarObjets"><input type="password" name="pass" id="pass" pattern=".{' . $minLength . ',}" maxlength="' . $limitPass . '"></DIV>';
+    echo '<DIV class="centrarObjets"><INPUT type="password" name="pass" id="pass" pattern=".{' . $minLength . ',}" maxlength="' . $limitPass . '" class ="passInput" value""></DIV>';
+    echo '<DIV class="centrarObjets"><LABEL class="label-pin" >TAG</LABEL> <BR><INPUT type="password" name="tag" id="tag"  pattern="24" maxlength="24" class="passInput"></DIV>';
     echo '<DIV>';
     echo '<TABLE class="centrarObjets">';
     echo '    <TBODY>';
@@ -700,30 +698,30 @@ class xpresentationLayer
     echo '        <TR></TR>';
     echo '        <TR></TR>';
     echo '        <TR>';
-    echo '            <TD> <input value=" 1 " onclick="number(1)" type="button" class="botones"></TD>';
-    echo '            <TD> <input value=" 2 " onclick="number(2)" type="button" class="botones"></TD>';
-    echo '            <TD> <input value=" 3 " onclick="number(3)" type="button" class="botones"></TD>';
+    echo '            <TD> <input value=" 1 " onclick="numero(\'1\')" type="button" class="botones"></TD>';
+    echo '            <TD> <input value=" 2 " onclick="numero(\'2\')" type="button" class="botones"></TD>';
+    echo '            <TD> <input value=" 3 " onclick="numero(\'3\')" type="button" class="botones"></TD>';
     echo '        </TR>';
     echo '        <TR>';
-    echo '            <TD> <input value=" 4 " onclick="number(4)" type="button" class="botones"></TD>';
-    echo '            <TD> <input value=" 5 " onclick="number(5)" type="button" class="botones"></TD>';
-    echo '            <TD> <input value=" 6 " onclick="number(6)" type="button" class="botones"></TD>';
+    echo '            <TD> <input value=" 4 " onclick="numero(\'4\')" type="button" class="botones"></TD>';
+    echo '            <TD> <input value=" 5 " onclick="numero(\'5\')" type="button" class="botones"></TD>';
+    echo '            <TD> <input value=" 6 " onclick="numero(\'6\')" type="button" class="botones"></TD>';
     echo '        </TR>';
     echo '        <TR>';
-    echo '            <TD> <input value=" 7 " onclick="number(7)" type="button" class="botones"></TD>';
-    echo '            <TD> <input value=" 8 " onclick="number(8)" type="button" class="botones"></TD>';
-    echo '            <TD> <input value=" 9 " onclick="number(9)" type="button" class="botones"></TD>';
+    echo '            <TD> <input value=" 7 " onclick="numero(\'7\')" type="button" class="botones"></TD>';
+    echo '            <TD> <input value=" 8 " onclick="numero(\'8\')" type="button" class="botones"></TD>';
+    echo '            <TD> <input value=" 9 " onclick="numero(\'9\')" type="button" class="botones"></TD>';
     echo '        </TR>';
     echo '        <TD></TD>';
-    echo '        <TD><input value=" 0 " onclick="number(0)" type="button" class="botones"></TD>';
-    echo '        <TD> <input type="image" name="botondeenvio" src="img/iconoborrar.png" class="imgErase"></TD>';
+    echo '        <TD><input value=" 0 " onclick="numero(\'0\')" type="button" class="botones"></TD>';
+    echo '        <TD> <input type="image" name="botondeenvio" src="img/iconoborrar.png" class="imgErase" onclick="borradoUltimaCifra()"></TD>';
     echo '        <TD></TD>';
     echo '        </TR>';
     echo '    </TBODY>';
     echo '</TABLE>';
     echo '<A class="wordsFM" href="">Olvido de Clave?</A>';
     echo '<DIV class="centrarObjets">';
-    echo '    <SPAN class="button close"> Aceptar </SPAN>';
+    echo '    <SPAN class="button" onclick=""> Aceptar </SPAN>';
     echo '</DIV>';
     echo '<A class="wordsFM " href="Register.php">Registro</A>';
     echo '</DIV>';
@@ -842,6 +840,48 @@ class xpresentationLayer
   {
     echo '<DIV id="wrapperSections">';
   }
+
+  /*=======================================================================
+    Function: buildButtonCenter
+    Description: start the section of buttos in X
+    Parameters: $title <-- Title of button
+    Algorithm:
+    Remarks:
+    Standarized: 2021/01/27 12:00
+    ===================================================================== */
+  static function buildButtonCenter($title , $event = "")
+  {
+    if ($event != ""){
+      $event = 'onclick="' . $event . '"';
+    }
+
+    echo '<DIV class="centrarObjets">';
+    echo '    <BUTTON type="submit" class="button"  '.$event.'>' . $title . '</BUTTON>';
+    echo '</DIV>';
+  } //buildButtonCenter
+
+  static function startForm($id = "", $event = "")
+  {
+    if ($event != ""){
+      $event = 'onsubmit="' . $event . '"';
+    }
+    
+    echo '<FORM id="' . $id . '" ' . $event . '>';
+  }
+
+  /*=======================================================================
+    Function: endForm
+    Description: end tag form
+    Parameters:      
+    Algorithm:
+    Remarks:
+    Standarized: 2021/01/27 12:00
+    ===================================================================== */
+  static function endForm()
+  {
+    echo '</FORM>';
+  } //endForm
+
 
   // buildHead
 } // xpresentationLayer

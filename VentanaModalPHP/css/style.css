@@ -185,12 +185,14 @@ p {
     cursor: pointer;
 }
 
-#pass {
+.passInput {
     background: none;
     border: none;
     height: 40px;
     font-size: 30px;
     text-align: center;
+    border-bottom: 1px solid #999;
+    width: 70%;
 }
 
 .resOp {
@@ -516,4 +518,9 @@ input[type=number] {
 .input-medium {
     width: 40%;
     height: 30px;
+}
+
+.label-pin{
+    font-weight: bold;
+    color: black;
 }
