@@ -473,5 +473,271 @@ class xclient
 		return ($result);
 	} // mgetclearencetypel
 
+	private function bgetremitancetypel($wsuser, $wspwd)
+	{
+		$this->updateField($getremitancetypel, "wsuser", "WSITALCAMBIO");
+		$this->updateField($getremitancetypel, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		return $getremitancetypel;
+	} // bgetremitancetypel
+
+	function mgetremitancetypel($url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$getremitancetypel =  $this->bgetremitancetypel("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$data["getremitancetypel"] = $getremitancetypel;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mgetremitancetypel
+
+	private function bgetcurrencyremitancel($wsuser, $wspwd)
+	{
+		$this->updateField($getcurrencyremitancel, "wsuser", "WSITALCAMBIO");
+		$this->updateField($getcurrencyremitancel, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		return $getcurrencyremitancel;
+	} // bgetcurrencyremitancel
+
+	function mgetcurrencyremitancel($url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$getcurrencyremitancel =  $this->bgetcurrencyremitancel("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$data["getcurrencyremitancel"] = $getcurrencyremitancel;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mgetcurrencyremitancel
+
+	private function bgetdebitinstrumentl($wsuser, $wspwd)
+	{
+		$this->updateField($getdebitinstrumentl, "wsuser", "WSITALCAMBIO");
+		$this->updateField($getdebitinstrumentl, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		return $getdebitinstrumentl;
+	} // bgetdebitinstrumentl
+
+	function mgetdebitinstrumentl($url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$getdebitinstrumentl =  $this->bgetdebitinstrumentl("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$data["getdebitinstrumentl"] = $getdebitinstrumentl;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mgetdebitinstrumentl
+
+	private function bgetlocationl($wsuser, $wspwd)
+	{
+		$this->updateField($getlocationl, "wsuser", "WSITALCAMBIO");
+		$this->updateField($getlocationl, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		return $getlocationl;
+	} // bgetlocationl
+
+	function mgetlocationl($url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$getlocationl =  $this->bgetlocationl("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$data["getlocationl"] = $getlocationl;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mgetlocationl
+
+	private function bgetiddocumenttypel($wsuser, $wspwd)
+	{
+		$this->updateField($getiddocumenttypel, "wsuser", "WSITALCAMBIO");
+		$this->updateField($getiddocumenttypel, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		return $getiddocumenttypel;
+	} // bgetiddocumenttypel
+
+	function mgetiddocumenttypel($url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$getiddocumenttypel =  $this->bgetiddocumenttypel("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$data["getiddocumenttypel"] = $getiddocumenttypel;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mgetiddocumenttypel
+
+	private function bendpoint($wsuser, $wspwd)
+	{
+		$this->updateField($endpoint, "wsuser", "WSITALCAMBIO");
+		$this->updateField($endpoint, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		return $endpoint;
+	} // bendpoint
+
+	function mendpoint($url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$endpoint =  $this->bendpoint("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$data["endpoint"] = $endpoint;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mendpoint
+
+	private function bresetpin($wsuser, $wspwd, $imei)
+	{
+		$this->updateField($resetpin, "wsuser", "WSITALCAMBIO");
+		$this->updateField($resetpin, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$this->updateField($resetpin, "imei", $imei);
+		return $resetpin;
+	} // bresetpin
+
+	function mresetpin($imei, $url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$resetpin =  $this->bresetpin("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919", $imei);
+		$data["resetpin"] = $resetpin;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mresetpin
+
+	private function bgetinstrumentsrcl($wspwd, $imei)
+	{
+		$this->updateField($getinstrumentsrcl, "wsuser", "WSITALCAMBIO");
+		$this->updateField($getinstrumentsrcl, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		return $getinstrumentsrcl;
+	} // bgetinstrumentsrcl
+
+	function mgetinstrumentsrcl($url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$getinstrumentsrcl =  $this->bgetinstrumentsrcl("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$data["getinstrumentsrcl"] = $getinstrumentsrcl;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mgetinstrumentsrcl
+
+	private function bgetcurrencysrcl($wsuser, $wspwd, $idinstrumentsrc)
+	{
+		$this->updateField($getcurrencysrcl, "wsuser", "WSITALCAMBIO");
+		$this->updateField($getcurrencysrcl, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$this->updateField($getcurrencysrcl, "idinstrumentsrc", $idinstrumentsrc);
+		return $getcurrencysrcl;
+	} // bgetcurrencysrcl
+
+	function mgetcurrencysrcl($idinstrumentsrc, $url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$getcurrencysrcl =  $this->bgetcurrencysrcl("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919", $idinstrumentsrc);
+		$data["getcurrencysrcl"] = $getcurrencysrcl;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mgetcurrencysrcl
+
+	private function bgetinstrumentdstl($wsuser, $wspwd, $idinstrumentsrc, $idcurrencysrc)
+	{
+		$this->updateField($getinstrumentdstl, "wsuser", "WSITALCAMBIO");
+		$this->updateField($getinstrumentdstl, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$this->updateField($getinstrumentdstl, "idinstrumentsrc", $idinstrumentsrc);
+		$this->updateField($getinstrumentdstl, "idcurrencysrc", $idcurrencysrc);
+		return $getinstrumentdstl;
+	} // bgetinstrumentdstl
+
+	function mgetinstrumentdstl($idinstrumentsrc, $idcurrencysrc, $url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$getinstrumentdstl =  $this->bgetinstrumentdstl("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919", $idinstrumentsrc, $idcurrencysrc);
+		$data["getinstrumentdstl"] = $getinstrumentdstl;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mgetinstrumentdstl
+
+	private function bgetcurrencydstl($wsuser, $wspwd, $idinstrumentsrc, $idcurrencysrc, $idinstrumentdst)
+	{
+		$this->updateField($getcurrencydstl, "wsuser", "WSITALCAMBIO");
+		$this->updateField($getcurrencydstl, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$this->updateField($getcurrencydstl, "idinstrumentsrc", $idinstrumentsrc);
+		$this->updateField($getcurrencydstl, "idcurrencysrc", $idcurrencysrc);
+		$this->updateField($getcurrencydstl, "idinstrumentdst", $idinstrumentdst);
+		return $getcurrencydstl;
+	} // bgetcurrencydstl
+
+	function mgetcurrencydstl($idinstrumentsrc, $idcurrencysrc, $idinstrumentdst, $url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$getcurrencydstl =  $this->bgetcurrencydstl("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919", $idinstrumentsrc, $idcurrencysrc, $idinstrumentdst);
+		$data["getcurrencydstl"] = $getcurrencydstl;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mgetcurrencydstl
+
+	private function bcalcexchange($wsuser, $wspwd, $idlead, $idinstrumentsrc, $idinstrumentdst, $idcurrencysrc, $idcurrencydst, $amount, $bank, $numref, $routing)
+	{
+		$this->updateField($calcexchange, "wsuser", "WSITALCAMBIO");
+		$this->updateField($calcexchange, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$this->updateField($calcexchange, "idlead", $idlead);
+		$this->updateField($calcexchange, "idinstrumentsrc", $idinstrumentsrc);
+		$this->updateField($calcexchange, "idinstrumentdst", $idinstrumentdst);
+		$this->updateField($calcexchange, "idcurrencysrc", $idcurrencysrc);
+		$this->updateField($calcexchange, "idcurrencydst", $idcurrencydst);
+		$this->updateField($calcexchange, "amount", $amount);
+		$this->updateField($calcexchange, "bank", $bank);
+		$this->updateField($calcexchange, "numref", $numref);
+		$this->updateField($calcexchange, "routing", $routing);
+		return $calcexchange;
+	} // bcalcexchange
+
+	function mcalcexchange($idlead, $idinstrumentsrc, $idinstrumentdst, $idcurrencysrc, $idcurrencydst, $amount, $bank, $numref, $routing, $url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$calcexchange =  $this->bcalcexchange("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919", $idlead, $idinstrumentsrc, $idinstrumentdst, $idcurrencysrc, $idcurrencydst, $amount, $bank, $numref, $routing);
+		$data["calcexchange"] = $calcexchange;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mcalcexchange
+
+
+
+
+	private function bgetcountrystatel($wsuser, $wspwd, $idcountry)
+	{
+		$this->updateField($getcountrystatel, "wsuser", "WSITALCAMBIO");
+		$this->updateField($getcountrystatel, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$this->updateField($getcountrystatel, "idcountry", $idcountry);
+		return $getcountrystatel;
+	} // bgetcountrystatel
+
+	function mgetcountrystatel($idcountry, $url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$getcountrystatel =  $this->bgetcountrystatel("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919", $idcountry);
+		$data["getcountrystatel"] = $getcountrystatel;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mgetcountrystatel
 
 } // class xclient

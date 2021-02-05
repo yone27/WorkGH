@@ -40,7 +40,7 @@ if (document.getElementsByClassName("openModal")) {
             body.style.overflow = "visible";
         }
     }
-}//FIN MODAL
+} //FIN MODAL
 
 const item1 = document.getElementById("opc1");
 const item2 = document.getElementById("opc2");
@@ -156,9 +156,8 @@ async function selectValor(idsrc, iddst, url) {
     //Ajax 
     const data = await fetch(`${url}&valor=${selected}`, { method: "GET" });
     const rest = await data.json();
-    console.log(rest);
 
-    let output = "";
+    let output = "<option disabled selected>Seleccione</option>';";
     rest.list.forEach(element => {
         output += `<option value="${element.id}">${element.name}</option>`;
     });
@@ -168,13 +167,34 @@ async function selectValor(idsrc, iddst, url) {
 
 }
 
+async function selectValorPhone(idsrc, iddst, url) {
+
+    let src = document.getElementById(idsrc);
+    let dst = document.getElementById(iddst);
+    var selected = src.options[src.selectedIndex].text;
+    if (selected == "") {
+        selected = "58";
+    }
+    //Ajax 
+    const data = await fetch(`${url}&valor=${selected}`, { method: "GET" });
+    const rest = await data.json();
+
+    let output = "<option disabled selected>Seleccione</option>';";
+    rest.list.forEach(element => {
+        output += `<option value="${element.id}">${element.code}</option>`;
+    });
+    //Fin ajax
+
+    dst.innerHTML = output;
+
+}
 
 var URLactual = window.location;
 if (URLactual.toString().includes("index.php")) {
     // JavaScript Document
 
     //Acciones tras cargar la página
-    mostrarEnPantalla = document.getElementById("pass");
+    mostrarEnPantalla = document.getElementById("pin");
 
     //Variable para ir guardando el valor del caracter
     x = "0";
@@ -188,7 +208,7 @@ if (URLactual.toString().includes("index.php")) {
     function numero(xx) {
         // Si x es igual a 0 el número que se muestra en pantalla es igual a 1.
 
-        
+
         if (mostrarEnPantalla.value.length < 4) {
             if (x == "0" || x1 == 1) {
                 mostrarEnPantalla.value = xx;
@@ -212,19 +232,94 @@ if (URLactual.toString().includes("index.php")) {
         //Una vez localizada puede ser borrada
         borrar = x.substr(cifras - 1, cifras);
         x = x.substr(0, cifras - 1);
-        
+
         mostrarEnPantalla.value = x;
     }
 }
 
 document.addEventListener("DOMContentLoaded", function (params) {
     const form = document.getElementById("idForm");
-    form.addEventListener("submit", async  (e) => {
-        e.preventDefault();
-        const formData = new FormData(form);
-        formData.append("newRegister","0");
-        const data = await fetch("ajax.php", {method : 'POST', body : formData});
-        const rest = await data.text();
-        console.log(rest);
-    })
+
+
+    if (form) {
+
+        form.addEventListener("submit", async (e) => {
+            const idCodeCountry = document.getElementById("CodeCountry");
+            const idAreaCode = document.getElementById("codeArea");
+
+            var textCodeCountry = idCodeCountry.options[idCodeCountry.selectedIndex].text;
+            var textAreaCode = idAreaCode.options[idAreaCode.selectedIndex].text;
+            e.preventDefault();
+            const formData = new FormData(form);
+            formData.append("CodeCountry", textCodeCountry);
+            formData.append("codeArea", textAreaCode);
+            formData.append("newRegister", "0");
+            const data = await fetch("ajax.php", { method: 'POST', body: formData });
+            const rest = await data.json();
+            console.log(rest);
+        })
+    }
 })
+
+document.addEventListener('DOMContentLoaded', function () {
+
+
+    const mainMenu = document.getElementById("mainMenu");
+    if (mainMenu) {
+        mainMenu.childNodes.forEach(value => {
+            value.addEventListener('click', async () => {
+                value.classList.add("activeClass")
+            })
+        })
+    }
+
+    const tvesModal = document.getElementById("tvesModal");
+    window.onclick = function (event) {
+        if (event.target == tvesModal) {
+            modal.style.display = "none";
+
+            body.style.position = "inherit";
+            body.style.height = "auto";
+            body.style.overflow = "visible";
+            console.log(mainMenu.childNodes);
+            mainMenu.childNodes.forEach(value => {
+                //Si en el presentationLayer se cambia el componente buildMenuOptionGrid, el article por otro componente, hay que modificarlo aqui igualmente
+                if (value.nodeName == "ARTICLE")
+                    value.classList.remove('activeClass')
+            })
+        }
+    }
+    
+    
+})
+async function dataPin() {
+    const dataPin = document.getElementById("pin");
+    const dataTag = document.getElementById("tag");
+    let url 
+    mainMenu.childNodes.forEach(value => {
+        if (value.nodeName == "ARTICLE") {
+            if (value.classList.contains("activeClass")) {
+                url = value.dataset.url
+            }
+        }
+    })
+
+    //Ajax 
+    const formData = new FormData();
+    formData.append("cond", "AuthPin");
+    formData.append("pin", dataPin.value);
+    formData.append("tag", dataTag.value);
+    const data = await fetch("ajax.php", { method: 'POST', body: formData });
+    const rest = await data.text();
+    console.log(rest);
+    
+    //FALTA LA LOGICA DE AUTENTICAR EL PIN
+    rest.code;
+    //Fin ajax
+
+    //location.href =`http://localhost/WorkGH/VentanaModalPHP/${url}`
+
+    
+
+
+}

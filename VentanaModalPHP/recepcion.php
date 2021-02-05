@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
         include_once("xpresentationlayer.php");
         xpresentationLayer:: startHtml("esp");
         xpresentationLayer:: buildHead("Xatoxi");
@@ -16,8 +17,7 @@
         //Cambiar en bs
         xpresentationLayer::buildSelectJson("Cuenta Bancaria", "bankAccount", "bankAccount", "", "", "");
         //Retirar en efectivo
-        xpresentationLayer::buildSelectJson("Estados", "state", "state", "", "", "");
-        xpresentationLayer::buildSelectJson("Sucursales a Nivel Nacional", "branchOffices", "branchOffices", "", "", "");
+        xpresentationLayer::buildSelectLarge("Sucursales", "branchOffices", "branchOffices", "", "", "");
         xpresentationLayer::endSection();        
 
         xpresentationLayer::buildSectionPin();   

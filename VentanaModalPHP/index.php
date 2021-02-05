@@ -10,15 +10,17 @@
         
 
         xpresentationLayer::startInputModal();
-        xpresentationLayer::buildPinPrincipalModal("PIN", 4, 4);
+        xpresentationLayer::buildPinPrincipalModal("PIN", 4, 4, "dataPin()");
         xpresentationLayer::endInputModal();
 
         xpresentationLayer::startSectionTwoColumns();        
-        xpresentationLayer::buildMenuOptionGrid("envio.png","ENVIO", true);
-        xpresentationLayer::buildMenuOptionGrid("recepcion.png","RECEPCION", true);
-        xpresentationLayer::buildMenuOptionGrid("venta.png","VENTA", true);
-        xpresentationLayer::buildMenuOptionGrid("compra.png","COMPRA", true);
-        xpresentationLayer::buildMenuOptionComplete("images.png","PERFIL", true);  
+        xpresentationLayer::buildMenuOptionGrid("envio.png","ENVIO", true, "envio.php");
+        xpresentationLayer::buildMenuOptionGrid("recepcion.png","RECEPCION", true, "recepcion.php");
+        xpresentationLayer::buildMenuOptionGrid("venta.png","VENTA", true, "venta.php");
+        xpresentationLayer::buildMenuOptionGrid("compra.png","COMPRA", true, "compra.php");
+        xpresentationLayer::buildMenuOptionGrid("cambio.png","CAMBIO", true, "cambio.php");
+        xpresentationLayer::buildMenuOptionGrid("images.png","PERFIL", true, "perfil.php");
+        //xpresentationLayer::buildMenuOptionComplete("images.png","PERFIL", true);  
         xpresentationLayer::endSection();   
 
         xpresentationLayer::endMain();

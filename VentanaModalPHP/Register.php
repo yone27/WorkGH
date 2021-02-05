@@ -1,9 +1,12 @@
 <?php
         error_reporting(0);
-        include_once("xpresentationlayer.php");
-        xpresentationLayer:: startHtml("esp");
-        xpresentationLayer:: buildHead("Xatoxi");
-        xpresentationLayer:: buildHeaderXatoxi();
+        include_once("xpresentationlayer.php");        
+        include_once("xclient.php");
+        $serviceCall = new xclient("");
+
+        xpresentationLayer::startHtml("esp");
+        xpresentationLayer::buildHead("Xatoxi");
+        xpresentationLayer::buildHeaderXatoxi();
 
 
         xpresentationLayer::startMain();
@@ -13,8 +16,11 @@
         xpresentationLayer::buildInputMedium("Usuario", "User", "User", "");
         xpresentationLayer::buildInputMedium("Email", "Email", "Email", "Ejemplo@gmail.com");
 
-        xpresentationLayer::buildPhoneComplete("Movil", "IdPhoneCountry", "IdPhoneCountry",  "", "", "");
-        xpresentationLayer::buildButtonCenter("Registrar");
+        $data_jsonAreaPhone = $serviceCall->mgetallcountrydetaill();
+        $data_jsonCodePhone = $serviceCall->mgetcellphoneareacodel("58");
+        //print_r($data_json);
+        xpresentationLayer::buildPhoneComplete("Movil", "CodeCountry", "codeArea",  "Phone", "CodeCountry", "codeArea",  "Phone", $data_jsonAreaPhone, $data_jsonCodePhone, "selectValorPhone('CodeCountry', 'codeArea', 'ajax.php?cond=CodeCountrycodeArea')");
+        xpresentationLayer::buildButtonCenter("Aceptar");
         xpresentationLayer::endAside();
         xpresentationLayer::endForm();
 

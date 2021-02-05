@@ -107,8 +107,8 @@ section.modal {
     width: 400px;
 } */
 
-.no-Select{
-    background: rgba(0,0,0,0.4);
+.no-Select {
+    background: rgba(0, 0, 0, 0.4);
 }
 
 h2 {
@@ -254,6 +254,10 @@ select {
     width: 490px;
 }
 
+.select-small {
+    width: 55px;
+}
+
 body {
     max-width: 700px;
     margin: 0 auto;
@@ -266,7 +270,7 @@ body {
     z-index: 0;
 }
 
-.header-text{
+.header-text {
     display: grid;
     align-content: center;
     text-align: center;
@@ -279,20 +283,19 @@ body {
 }
 
 .encabezado-home {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    /* grid-template-columns: repeat(3, 1fr); */
 }
 
 .encabezado-home :nth-child(1) {
-    grid-column: 1 / 3;
-    grid-row: 1;
-    padding: 15px;
+    /* grid-column: 1 / 2; */
+    padding: 10px;
 }
 
 .encabezado-home :nth-child(2) {
-    grid-column: 2 / 3;
-    justify-self: center;
-    grid-row: 1;
+    /* grid-column: 2 / 3; */
+    /* justify-self: center; */
+    margin: 0px 18%;
 }
 
 .section-Titles {
@@ -429,6 +432,11 @@ h1 {
     margin: 15px;
 }
 
+.doc-Perfil {
+    display: flex;
+    justify-content: center;
+}
+
 .btn {
     width: 7%;
     height: 30px;
@@ -520,7 +528,84 @@ input[type=number] {
     height: 30px;
 }
 
-.label-pin{
+.label-pin {
     font-weight: bold;
     color: black;
+}
+
+
+/*ANIMACIONES*/
+
+.active {
+    background-color: gray;
+}
+
+.left {
+    transform: translate(-120%, 0%);
+}
+
+.overlap-a {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+}
+
+.animation-slideOutUp {
+    transition: all .5s linear;
+    transform: translateY(-120%);
+}
+
+.animation-slideInRight {
+    transition: all .5s linear;
+    transform: translateX(0%);
+}
+
+.animate {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+
+/* FadeOut */
+
+.animate__fadeOut {
+    animation-name: fadeOut;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* FadeIn */
+
+.animate__fadeIn {
+    animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.otpVeri {
+    background: #6c6666;
+    color: white;
+    font-size: 30px;
+    width: 20%;
+    font-weight: bold;
+    text-align: center;
 }
