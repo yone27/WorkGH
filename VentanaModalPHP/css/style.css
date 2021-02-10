@@ -295,7 +295,7 @@ body {
 .encabezado-home :nth-child(2) {
     /* grid-column: 2 / 3; */
     /* justify-self: center; */
-    margin: 0px 18%;
+    margin: 0px 20%;
 }
 
 .section-Titles {
@@ -537,6 +537,10 @@ input[type=number] {
 /*ANIMACIONES*/
 
 .active {
+    background-color: white;
+}
+
+.no-active{
     background-color: gray;
 }
 

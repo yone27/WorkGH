@@ -13,13 +13,13 @@
 
         xpresentationLayer::startForm("idForm");
         xpresentationLayer::startAsideOneColumn();        
-        xpresentationLayer::buildInputMedium("Usuario", "User", "User", "");
-        xpresentationLayer::buildInputMedium("Email", "Email", "Email", "Ejemplo@gmail.com");
+        xpresentationLayer::buildInputMedium("Usuario", "user", "user", "");
+        xpresentationLayer::buildInputMedium("Email", "email", "email", "Ejemplo@gmail.com");
 
         $data_jsonAreaPhone = $serviceCall->mgetallcountrydetaill();
         $data_jsonCodePhone = $serviceCall->mgetcellphoneareacodel("58");
         //print_r($data_json);
-        xpresentationLayer::buildPhoneComplete("Movil", "CodeCountry", "codeArea",  "Phone", "CodeCountry", "codeArea",  "Phone", $data_jsonAreaPhone, $data_jsonCodePhone, "selectValorPhone('CodeCountry', 'codeArea', 'ajax.php?cond=CodeCountrycodeArea')");
+        xpresentationLayer::buildPhoneComplete("Movil", "codeCountry", "codeArea",  "phone", "codeCountry", "codeArea",  "phone", $data_jsonAreaPhone, $data_jsonCodePhone, "selectValorforId('codeCountry/codeArea', 'ajax.php?cond=mgetcellphoneareacodel')");
         xpresentationLayer::buildButtonCenter("Aceptar");
         xpresentationLayer::endAside();
         xpresentationLayer::endForm();

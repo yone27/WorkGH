@@ -25,8 +25,15 @@
         $data_json = $serviceCall->mgetiddocumenttypel();
         xpresentationLayer::buildSectionDocument("T. Doc.", "Documento", "Fec. Nacimiento", "typeDocument", "document", "birthdate", "typeDocument", "document", "birthdate", $data_json); 
         
-        xpresentationLayer::buildTextArea("Direccion", "Direction","Direction", "", "20");
-        xpresentationLayer::buildInputTextLargeCenter("Cuenta bancaria", "BankAccount","BankAccount","", 20);
+        $data_json = $serviceCall->mgetcountryl();
+        xpresentationLayer::startSectionTwoColumns();
+        xpresentationLayer::buildSelectLarge("Pais", "country", "country", $data_json);
+        xpresentationLayer::buildInputNumberGrid("Estado", "state", "state", "");
+        xpresentationLayer::buildInputNumberGrid("Ciudad", "city", "city", "", "", "");
+        xpresentationLayer::endSection();  
+
+        xpresentationLayer::buildTextArea("Direccion", "direction","direction", "", "20");
+        xpresentationLayer::buildInputTextLargeCenter("Cuenta bancaria", "bankAccount","bankAccount","", 20);
         xpresentationLayer::buildButtonCenter("Aceptar");
         xpresentationLayer::endMain();
 

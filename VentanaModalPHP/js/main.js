@@ -84,9 +84,6 @@ if (item3) {
     })
 }
 
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
     const container = document.querySelector("#item-container");
     const wrapperButtons = document.querySelector("#wrapperButtons");
@@ -138,7 +135,9 @@ document.addEventListener('DOMContentLoaded', function () {
             for (const val of wrapperButtons.children) {
                 if (val.dataset.id != iterator.dataset.id) {
                     val.classList.remove('active')
+                    val.classList.add('no-active')
                 } else {
+                    val.classList.remove('no-active')
                     val.classList.add('active')
                 }
             }
@@ -146,46 +145,46 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-//Permite obtener el valor del select y llenar otro select enviandole a un servicio ese valor
-async function selectValor(idsrc, iddst, url) {
+//Funcion que permite enviar los datos indicados de 1 o varios selects y enviarlos el ajax, que permite ir a servicio
+//y devolver una lista para agregarla a otro select
+//srcdst = Es una cadena de caracteres donde se encuentran los ID de los elementos html, separados por "/" 
+//url = es una ruta para mandarsela al ajax, donde va incluida una varaible cond, que permite validar en el archivo ajax.php
+async function selectValorforId(srcdst, url) {
 
-    let src = document.getElementById(idsrc);
-    let dst = document.getElementById(iddst);
-    let selected = src.options[src.selectedIndex].value;
+    const src = srcdst.split("/")
+    const dst = src[src.length - 1];
 
-    //Ajax 
-    const data = await fetch(`${url}&valor=${selected}`, { method: "GET" });
-    const rest = await data.json();
-
-    let output = "<option disabled selected>Seleccione</option>';";
-    rest.list.forEach(element => {
-        output += `<option value="${element.id}">${element.name}</option>`;
-    });
-    //Fin ajax
-
-    dst.innerHTML = output;
-
-}
-
-async function selectValorPhone(idsrc, iddst, url) {
-
-    let src = document.getElementById(idsrc);
-    let dst = document.getElementById(iddst);
-    var selected = src.options[src.selectedIndex].text;
-    if (selected == "") {
-        selected = "58";
+    let iddst = document.getElementById(dst);
+    let values = "";
+    for (let index = 0; index < src.length - 1; index++) {
+        let idValue = document.getElementById(src[index]);
+        if (dst != "codeArea") {
+            value = idValue.options[idValue.selectedIndex].value;
+        }
+        else {
+            value = idValue.options[idValue.selectedIndex].text;
+        }
+        values += `&valor${index}=${value}`
     }
-    //Ajax 
-    const data = await fetch(`${url}&valor=${selected}`, { method: "GET" });
+
+    const data = await fetch(`${url}${values}`, { method: "GET" });
     const rest = await data.json();
 
     let output = "<option disabled selected>Seleccione</option>';";
     rest.list.forEach(element => {
-        output += `<option value="${element.id}">${element.code}</option>`;
+        if (element.iso != null) {
+            output += `<option value="${element.id}">${element.iso}</option>`;
+        }
+        else if (element.code != null) {
+            output += `<option value="${element.id}">${element.code}</option>`;
+        }
+        else if (element.name != null) {
+            output += `<option value="${element.id}">${element.name}</option>`;
+        }
     });
     //Fin ajax
 
-    dst.innerHTML = output;
+    iddst.innerHTML = output;
 
 }
 
@@ -256,7 +255,6 @@ document.addEventListener("DOMContentLoaded", function (params) {
             formData.append("newRegister", "0");
             const data = await fetch("ajax.php", { method: 'POST', body: formData });
             const rest = await data.json();
-            console.log(rest);
         })
     }
 })
@@ -289,13 +287,14 @@ document.addEventListener('DOMContentLoaded', function () {
             })
         }
     }
-    
-    
+
+
 })
+
 async function dataPin() {
     const dataPin = document.getElementById("pin");
     const dataTag = document.getElementById("tag");
-    let url 
+    let url
     mainMenu.childNodes.forEach(value => {
         if (value.nodeName == "ARTICLE") {
             if (value.classList.contains("activeClass")) {
@@ -304,22 +303,23 @@ async function dataPin() {
         }
     })
 
-    //Ajax 
-    const formData = new FormData();
-    formData.append("cond", "AuthPin");
-    formData.append("pin", dataPin.value);
-    formData.append("tag", dataTag.value);
-    const data = await fetch("ajax.php", { method: 'POST', body: formData });
-    const rest = await data.text();
-    console.log(rest);
+    // //Ajax 
+    // const formData = new FormData();
+    // formData.append("cond", "AuthPin");
+    // formData.append("pin", dataPin.value);
+    // formData.append("tag", dataTag.value);
+    // const data = await fetch("ajax.php", { method: 'POST', body: formData });
+    // const rest = await data.text();
+    // console.log(rest);
+
+    // //FALTA LA LOGICA DE AUTENTICAR EL PIN
+    // rest.code;
+    // //Fin ajax
+
+    location.href =`http://localhost/WorkGH/VentanaModalPHP/${url}`
+
+}
+
+async function onBlurCustom(srcdst, url) {
     
-    //FALTA LA LOGICA DE AUTENTICAR EL PIN
-    rest.code;
-    //Fin ajax
-
-    //location.href =`http://localhost/WorkGH/VentanaModalPHP/${url}`
-
-    
-
-
 }

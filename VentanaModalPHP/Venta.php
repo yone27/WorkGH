@@ -12,13 +12,13 @@
         xpresentationLayer::endSection();
 
         xpresentationLayer::startSectionTwoColumns();
-        xpresentationLayer::buildInputNumberGrid("Monto", "Amount", "Amount", "0.00");
-        xpresentationLayer::buildSelectJson("Divisa", "Currency", "Currency", "", "", "");
-        xpresentationLayer::buildSelectJson("Debitar de", "PayIn", "PayIn", "", "", "");
-        xpresentationLayer::buildSelectJson("Abonar en", "PayForm", "PayForm", "", "", "");
-        xpresentationLayer::buildInputTextDisable("Tasa de Cambio", "Amount", "Amount", "0.00");
-        xpresentationLayer::buildInputTextDisable("Monto a recibir Bs.", "Country", "Country", "0.00");
-        xpresentationLayer::buildSelectLarge("Cta. Receptora", "Provider", "Provider", "", "", "");
+        xpresentationLayer::buildInputNumberGrid("Monto", "amount", "amount", "0.00");
+        xpresentationLayer::buildSelectJson("Divisa", "currency", "currency", "", "", "");
+        xpresentationLayer::buildSelectJson("Debitar de", "payIn", "payIn", "", "", "");
+        xpresentationLayer::buildSelectJson("Abonar en", "payForm", "payForm", "", "", "");
+        xpresentationLayer::buildInputTextDisable("Tasa de Cambio", "amountChange", "amountChange", "0.00");
+        xpresentationLayer::buildInputTextDisable("Monto a recibir Bs.", "amountRecieve", "amountRecieve", "0.00");
+        xpresentationLayer::buildSelectLarge("Cta. Receptora", "provider", "provider", "", "", "");
         xpresentationLayer::endSection();        
         xpresentationLayer::buildSectionPin();   
         xpresentationLayer::endMain();

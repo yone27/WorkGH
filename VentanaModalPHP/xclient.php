@@ -50,13 +50,12 @@ class xclient
 		$this->init($url);
 		$getproviderl =  $this->bgetproviderl("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919", $idcountry);
 		$data["getproviderl"] = $getproviderl;
-
 		$data_string = json_encode($data);
 		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
 		$response = curl_exec($this->client);
 		$result = json_decode($response);
 		return ($result);
-	}
+	}//mgetproviderl
 
 	private function bgetcountryl($wsuser, $wspwd)
 	{
@@ -70,7 +69,6 @@ class xclient
 		$this->init($url);
 		$getcountryl =  $this->bgetcountryl("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919");
 		$data["getcountryl"] = $getcountryl;
-
 		$data_string = json_encode($data);
 		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
 		$response = curl_exec($this->client);
@@ -717,9 +715,6 @@ class xclient
 		return ($result);
 	} // mcalcexchange
 
-
-
-
 	private function bgetcountrystatel($wsuser, $wspwd, $idcountry)
 	{
 		$this->updateField($getcountrystatel, "wsuser", "WSITALCAMBIO");
@@ -739,5 +734,207 @@ class xclient
 		$result = json_decode($response);
 		return ($result);
 	} // mgetcountrystatel
+
+	private function bgetstatecityl($wsuser, $wspwd, $idcountry)
+	{
+		$this->updateField($getstatecityl, "wsuser", "WSITALCAMBIO");
+		$this->updateField($getstatecityl, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$this->updateField($getstatecityl, "idstate", $idcountry);
+		return $getstatecityl;
+	} // bgetstatecityl
+
+	function mgetstatecityl($idcountry, $url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$getstatecityl =  $this->bgetstatecityl("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919", $idcountry);
+		$data["getstatecityl"] = $getstatecityl;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mgetstatecityl
+
+	private function bcalcsendtr($wsuser, $wspwd, $idlead, $idcountry, $idcurrency, $amount)
+	{
+		$this->updateField($calcsendtr, "wsuser", "WSITALCAMBIO");
+		$this->updateField($calcsendtr, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$this->updateField($getstatecityl, "idlead", $idlead);
+		$this->updateField($getstatecityl, "idcountry", $idcountry);
+		$this->updateField($getstatecityl, "idcurrency", $idcurrency);
+		$this->updateField($getstatecityl, "amount", $amount);
+		return $calcsendtr;
+	} // bcalcsendtr
+
+	function mcalcsendtr($idlead, $idcountry, $idcurrency, $amount, $url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$calcsendtr =  $this->bcalcsendtr("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919", $idlead, $idcountry, $idcurrency, $amount);
+		$data["calcsendtr"] = $calcsendtr;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mcalcsendtr
+
+	private function bgetcurrencytrl($wsuser, $wspwd)
+	{
+		$this->updateField($getcurrencytrl, "wsuser", "WSITALCAMBIO");
+		$this->updateField($getcurrencytrl, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		return $getcurrencytrl;
+	} // bgetcurrencytrl
+
+	function mgetcurrencytrl($url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$getcurrencytrl =  $this->bgetcurrencytrl("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$data["getcurrencytrl"] = $getcurrencytrl;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mgetcurrencytrl
+
+	private function bexecsell($wsuser, $wspwd, $idlead, $idcurrency, $amount, $otp)
+	{
+		$this->updateField($execsell, "wsuser", "WSITALCAMBIO");
+		$this->updateField($execsell, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$this->updateField($execsell, "idlead", $idlead);
+		$this->updateField($execsell, "idcurrency", $idcurrency);
+		$this->updateField($execsell, "amount", $amount);
+		$this->updateField($execsell, "otp", $otp);
+		return $execsell;
+	} // bexecsell
+
+	function mexecsell($idlead, $idcurrency, $amount, $otp, $url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$execsell =  $this->bexecsell("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919", $idlead, $idcurrency, $amount, $otp);
+		$data["execsell"] = $execsell;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mexecsell
+
+	private function bexexcbuy($wsuser, $wspwd, $idlead, $idcurrency, $amount, $otp)
+	{
+		$this->updateField($exexcbuy, "wsuser", "WSITALCAMBIO");
+		$this->updateField($exexcbuy, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$this->updateField($exexcbuy, "idlead", $idlead);
+		$this->updateField($exexcbuy, "idcurrency", $idcurrency);
+		$this->updateField($exexcbuy, "amount", $amount);
+		$this->updateField($exexcbuy, "otp", $otp);
+		return $exexcbuy;
+	} // bexexcbuy
+
+	function mexexcbuy($idlead, $idcurrency, $amount, $otp ,$url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$exexcbuy =  $this->bexexcbuy("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919", $idlead, $idcurrency, $amount, $otp);
+		$data["exexcbuy"] = $exexcbuy;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mexexcbuy
+
+	private function bexecsend($wsuser, $wspwd, $idlead, $idcountry, $idprovider, $otamountp, $idremitancetype, $idcurrency, $idclearencetype, $acc, $reference, $bdocumentid, $bfirstname, $bmiddlename, $blastname, $bsecondlastaname, $bbank, $bacc)
+	{
+		$this->updateField($execsend, "wsuser", "WSITALCAMBIO");
+		$this->updateField($execsend, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$this->updateField($execsend, "idlead", $idlead);
+		$this->updateField($execsend, "idcountry", $idcountry);
+		$this->updateField($execsend, "idprovider", $idprovider);
+		$this->updateField($execsend, "amount", $otamountp);
+		$this->updateField($execsend, "idremitancetype", $idremitancetype);
+		$this->updateField($execsend, "idcurrency", $idcurrency);
+		$this->updateField($execsend, "idclearencetype", $idclearencetype);
+		$this->updateField($execsend, "acc", $acc);
+		$this->updateField($execsend, "reference", $reference);
+		$this->updateField($execsend, "bdocumentid", $bdocumentid);
+		$this->updateField($execsend, "bfirstname", $bfirstname);
+		$this->updateField($execsend, "bmiddlename", $bmiddlename);
+		$this->updateField($execsend, "blastname", $blastname);
+		$this->updateField($execsend, "bsecondlastaname", $bsecondlastaname);
+		$this->updateField($execsend, "bbank", $bbank);
+		$this->updateField($execsend, "bacc", $bacc);
+		return $execsend;
+	} // bexecsend
+
+	function mexecsend($idlead, $idcountry, $idprovider, $otamountp, $idremitancetype, $idcurrency, $idclearencetype, $acc, $reference, $bdocumentid, $bfirstname, $bmiddlename, $blastname, $bsecondlastaname, $bbank, $bacc ,$url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$execsend =  $this->bexecsend("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919", $idlead, $idcountry, $idprovider, $otamountp, $idremitancetype, $idcurrency, $idclearencetype, $acc, $reference, $bdocumentid, $bfirstname, $bmiddlename, $blastname, $bsecondlastaname, $bbank, $bacc);
+		$data["execsend"] = $execsend;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mexecsend
+
+	private function bgetpartyxl($wsuser, $wspwd)
+	{
+		$this->updateField($getpartyxl, "wsuser", "WSITALCAMBIO");
+		$this->updateField($getpartyxl, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		return $getpartyxl;
+	} // bgetpartyxl
+
+	function mgetpartyxl($url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$getpartyxl =  $this->bgetpartyxl("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$data["getpartyxl"] = $getpartyxl;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mgetpartyxl
+
+	private function bfindpartyx($wsuser, $wspwd, $key)
+	{
+		$this->updateField($findpartyx, "wsuser", "WSITALCAMBIO");
+		$this->updateField($findpartyx, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$this->updateField($findpartyx, "key", $key);
+		return $findpartyx;
+	} // bfindpartyx
+
+	function mfindpartyx($key, $url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$findpartyx =  $this->bfindpartyx("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919", $key);
+		$data["findpartyx"] = $findpartyx;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mfindpartyx
+
+	private function bgetbankl($wsuser, $wspwd, $idcountry)
+	{
+		$this->updateField($getbankl, "wsuser", "WSITALCAMBIO");
+		$this->updateField($getbankl, "wspwd", "1cc61eb7ae2187eb91f97d1ae5300919");
+		$this->updateField($getbankl, "idcountry", $idcountry);
+		return $getbankl;
+	} // bgetbankl
+
+	function mgetbankl($idcountry, $url = "https://www.italcontroller.com/italsis/includes/rest/SERVER/XATOXI/services.php")
+	{
+		$this->init($url);
+		$getbankl =  $this->bgetbankl("WSITALCAMBIO", "1cc61eb7ae2187eb91f97d1ae5300919", $idcountry);
+		$data["getbankl"] = $getbankl;
+		$data_string = json_encode($data);
+		curl_setopt($this->client, CURLOPT_POSTFIELDS, $data_string);
+		$response = curl_exec($this->client);
+		$result = json_decode($response);
+		return ($result);
+	} // mgetbankl
 
 } // class xclient

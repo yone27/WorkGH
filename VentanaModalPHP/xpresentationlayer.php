@@ -442,14 +442,14 @@ class xpresentationLayer
     Algorithm:
     Remarks:
     Standarized: 2021/01/19 12:00
-    ===================================================================== */
-  static function buildInputTextGrid($titleLabel, $idInput, $nameInput, $placeholder = "")
+    ===================================================================== */    
+  static function buildInputTextGrid($titleLabel, $idInput, $nameInput, $placeholder = "", $maxLength = "")
   {
     echo '<ARTICLE class="grid-item-no-border">';
     echo '    <ASIDE>';
     echo '        <DIV class="grid-item-no-border grid-item-2">';
     echo '            <LABEL class="font-Bold">' . $titleLabel . '</LABEL>';
-    echo '            <INPUT type="text" name="' . $nameInput . '" id="' . $idInput . '" placeholder="' . $placeholder . '" class="input-radius">';
+    echo '            <INPUT type="text" name="' . $nameInput . '" id="' . $idInput . '" placeholder="' . $placeholder . '" maxlength="' . $maxLength . '" class="input-radius">';
     echo '        </DIV>';
     echo '    </ASIDE>';
     echo '</ARTICLE>';

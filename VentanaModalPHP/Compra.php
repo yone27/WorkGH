@@ -20,9 +20,9 @@
         $data_json = $serviceCall->mgetcurrencyl();
         xpresentationLayer::buildSelectJson("Divisa", "Currency", "Currency", $data_json, "", "");
         
-        xpresentationLayer::buildSelectJson("Abonar en", "PayIn", "PayIn", "", "", "");
-        xpresentationLayer::buildSelectJson("Forma de Pago", "PayForm", "PayForm", "", "", "");
-        xpresentationLayer::buildSelectLarge("Cuentas Bancarias Receptoras", "AccountBanks", "AccountBanks", "", "", "");
+        xpresentationLayer::buildSelectJson("Abonar en", "payIn", "payIn", "", "", "");
+        xpresentationLayer::buildSelectJson("Forma de Pago", "payForm", "payForm", "", "", "");
+        xpresentationLayer::buildSelectLarge("Cuentas Bancarias Receptoras", "accountBanks", "accountBanks", "", "", "");
         xpresentationLayer::endSection();        
         xpresentationLayer::buildSectionPin();   
         xpresentationLayer::endMain();
