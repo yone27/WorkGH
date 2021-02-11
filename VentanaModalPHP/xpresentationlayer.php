@@ -70,14 +70,14 @@ class xpresentationLayer
     ===================================================================== */
   static function buildHeaderXatoxi()
   {
-   echo '<HEADER class="header">';
-   echo '<DIV class="encabezado encabezado-home">';
-   echo '    <A href="index.php" style="width: 25%;">';
-   echo '    <IMG class="logo" src="img/home.png">';
-   echo '    </A>';
-   echo '    <IMG class="logo" src="img/logo.png">';
-   echo '</DIV>';
-   echo '</HEADER>';
+    echo '<HEADER class="header">';
+    echo '<DIV class="encabezado encabezado-home">';
+    echo '    <A href="index.php" style="width: 25%;">';
+    echo '    <IMG class="logo" src="img/home.png">';
+    echo '    </A>';
+    echo '    <IMG class="logo" src="img/logo.png">';
+    echo '</DIV>';
+    echo '</HEADER>';
   } // buildHeaderXatoxi
 
   /*=======================================================================
@@ -281,7 +281,12 @@ class xpresentationLayer
     echo '<SELECT name="' . $name . '" id="' . $id . '" ' . $event . ' class="select-width">';
     echo '<OPTION disabled selected>Seleccione</OPTION>';
     foreach ($data as $value) {
-      echo '<OPTION value="' . $value->id . '">' . $value->name . ' </OPTION>';
+
+      if ($id != "currencyCommend" && $id != "currencyTransfer") {
+        echo '<OPTION value="' . $value->id . '">' . $value->name . ' </OPTION>';
+      } else {
+        echo '<OPTION value="' . $value->id . '">' . $value->iso . ' </OPTION>';
+      }
     }
 
     // array_walk($data, function(&$value, $key)use(&$showCol) {                        
@@ -442,7 +447,7 @@ class xpresentationLayer
     Algorithm:
     Remarks:
     Standarized: 2021/01/19 12:00
-    ===================================================================== */    
+    ===================================================================== */
   static function buildInputTextGrid($titleLabel, $idInput, $nameInput, $placeholder = "", $maxLength = "")
   {
     echo '<ARTICLE class="grid-item-no-border">';
@@ -620,17 +625,15 @@ class xpresentationLayer
       $event = 'onchange="' . $event . '"';
     }
 
-    echo '<DIV class="grid-item-no-border grid-item-1">'; 
+    echo '<DIV class="grid-item-no-border grid-item-1">';
     echo '  <LABEL class="font-Bold margin-label">' . $titleLabel . '</LABEL>';
-    echo '  <DIV class="flex-content">';    
+    echo '  <DIV class="flex-content">';
     echo '<SELECT name="' . $nameCountry . '" id="' . $idCountry . '" ' . $event . ' class="select-width">';
     echo '<OPTION disabled selected>Seleccione</OPTION>';
     foreach ($data as $value) {
-      if($value->internationalphonecode != "58"){
+      if ($value->internationalphonecode != "58") {
         echo '<OPTION value="' . $value->id . '" >' . $value->internationalphonecode . ' </OPTION>';
-      }
-      else
-      {
+      } else {
         echo '<OPTION value="' . $value->id . '" selected>' . $value->internationalphonecode . ' </OPTION>';
       }
     }
@@ -638,8 +641,7 @@ class xpresentationLayer
     echo '<SELECT name="' . $nameArea . '" id="' . $idArea . '" class="select-width">';
     echo '<OPTION disabled selected>Seleccione</OPTION>';
     foreach ($data2 as $value) {
-        echo '<OPTION value="' . $value->id . '" >' . $value->code . ' </OPTION>';
-      
+      echo '<OPTION value="' . $value->id . '" >' . $value->code . ' </OPTION>';
     }
     echo '</SELECT>';
 
@@ -743,7 +745,7 @@ class xpresentationLayer
     echo '</TABLE>';
     echo '<A class="wordsFM" href="">Cambio de PIN</A>';
     echo '<DIV class="centrarObjets">';
-    echo '    <SPAN class="button" onclick="'.$eventButton.'"> Aceptar </SPAN>';
+    echo '    <SPAN class="button" onclick="' . $eventButton . '"> Aceptar </SPAN>';
     echo '</DIV>';
     echo '<A class="wordsFM " href="Register.php">Registro</A>';
     echo '</DIV>';
@@ -912,12 +914,13 @@ class xpresentationLayer
     Remarks:
     Standarized: 2021/01/27 12:00
     ===================================================================== */
-    static function startContentofOption($data_id = ""){
-      echo '<DIV data-id="'.$data_id.'" class="hidden">';
-    }//startContentofOption
+  static function startContentofOption($data_id = "")
+  {
+    echo '<DIV data-id="' . $data_id . '" class="hidden">';
+  } //startContentofOption
 
 
-    /*=======================================================================
+  /*=======================================================================
     Function: buildSectionDocument
     Description: build a section with a small select, input text medium and input type date 
     Parameters:     $labelSelect <- label title of select
@@ -934,32 +937,32 @@ class xpresentationLayer
     Remarks:
     Standarized: 2021/02/2 10:50
     ===================================================================== */
-    static function buildSectionDocument($labelSelect, $labelInputText, $labelInputDate, $nameSelect, $nameInputText, $nameInputDate, $idSelect, $idInputText, $idInputDate, $jsonSelect){
-      $data = $jsonSelect->list;
+  static function buildSectionDocument($labelSelect, $labelInputText, $labelInputDate, $nameSelect, $nameInputText, $nameInputDate, $idSelect, $idInputText, $idInputDate, $jsonSelect)
+  {
+    $data = $jsonSelect->list;
 
-      echo '<DIV class="doc-Perfil">';
-      echo '    <DIV class="grid-item-no-border grid-item-1 marginSect">';
-      echo '        <LABEL  class="font-Bold margin-label">'.$labelSelect.'</LABEL>';
-      echo '<SELECT name="'.$nameSelect.'" id="' . $idSelect . '" class="select-small">';
-      echo '<OPTION disabled selected>Seleccione</OPTION>';
-      foreach ($data as $value) {
-          echo '<OPTION value="' . $value->id . '" >' . $value->name . ' </OPTION>';
-        
-      }
-      echo '</SELECT>';
-      echo '    </DIV>';
-      echo '    <DIV class="grid-item-no-border grid-item-1 marginSect">';
-      echo '        <LABEL class="font-Bold margin-label">'.$labelInputText.'</LABEL>';
-      echo '        <INPUT type="text" name="'.$nameInputText.'" id="'.$idInputText.'" class="input-radius ">';
-      echo '    </DIV>';
-      echo '    <DIV class="grid-item-no-border grid-item-1 marginSect">';
-      echo '        <LABEL class="font-Bold margin-label">'.$labelInputDate.'</LABEL>';
-      echo '        <INPUT type="date" name="'.$nameInputDate.'" id="'.$idInputDate.'" class="input-radius ">';
-      echo '    </DIV>';
-      echo '</DIV>';
-    }//buildSectionDocument
+    echo '<DIV class="doc-Perfil">';
+    echo '    <DIV class="grid-item-no-border grid-item-1 marginSect">';
+    echo '        <LABEL  class="font-Bold margin-label">' . $labelSelect . '</LABEL>';
+    echo '<SELECT name="' . $nameSelect . '" id="' . $idSelect . '" class="select-small">';
+    echo '<OPTION disabled selected>Seleccione</OPTION>';
+    foreach ($data as $value) {
+      echo '<OPTION value="' . $value->id . '" >' . $value->name . ' </OPTION>';
+    }
+    echo '</SELECT>';
+    echo '    </DIV>';
+    echo '    <DIV class="grid-item-no-border grid-item-1 marginSect">';
+    echo '        <LABEL class="font-Bold margin-label">' . $labelInputText . '</LABEL>';
+    echo '        <INPUT type="text" name="' . $nameInputText . '" id="' . $idInputText . '" class="input-radius ">';
+    echo '    </DIV>';
+    echo '    <DIV class="grid-item-no-border grid-item-1 marginSect">';
+    echo '        <LABEL class="font-Bold margin-label">' . $labelInputDate . '</LABEL>';
+    echo '        <INPUT type="date" name="' . $nameInputDate . '" id="' . $idInputDate . '" class="input-radius ">';
+    echo '    </DIV>';
+    echo '</DIV>';
+  } //buildSectionDocument
 
-    /*=======================================================================
+  /*=======================================================================
     Function: buildTextArea
     Description: end tag form
     Parameters:      
@@ -967,14 +970,15 @@ class xpresentationLayer
     Remarks:
     Standarized: 2021/01/27 12:00
     ===================================================================== */
-    static function buildTextArea($titleLabel, $nameInput, $idInput, $placeholder = "", $minLength = "0"){
-      echo '<DIV class="grid-item-no-border grid-item-1 grid-item-2 marginSect">';
-      echo '    <LABEL class="font-Bold">' . $titleLabel . '</LABEL>';
-      echo '    <TEXTAREA type="text" name="' . $nameInput . '" id="' . $idInput . '" placeholder="' . $placeholder . '" minlength="'.$minLength.'" class="input-text-large input-radius" cols="40" rows="3"  style="resize: none;"></TEXTAREA>';
-      echo '</DIV>';
-    }//buildTextArea
+  static function buildTextArea($titleLabel, $nameInput, $idInput, $placeholder = "", $minLength = "0")
+  {
+    echo '<DIV class="grid-item-no-border grid-item-1 grid-item-2 marginSect">';
+    echo '    <LABEL class="font-Bold">' . $titleLabel . '</LABEL>';
+    echo '    <TEXTAREA type="text" name="' . $nameInput . '" id="' . $idInput . '" placeholder="' . $placeholder . '" minlength="' . $minLength . '" class="input-text-large input-radius" cols="40" rows="3"  style="resize: none;"></TEXTAREA>';
+    echo '</DIV>';
+  } //buildTextArea
 
-    /*=======================================================================
+  /*=======================================================================
     Function: startContentofOption
     Description: end tag form
     Parameters:      
@@ -982,24 +986,25 @@ class xpresentationLayer
     Remarks:
     Standarized: 2021/01/27 12:00
     ===================================================================== */
-    static function buildOtpContent(){
-      echo '<SECTION class="marginSect">';
-      echo '    <ASIDE class="">';
-      echo '        <DIV class="grid-item-no-border ">';
-      echo '            <h1>OTP Verificación</h1>';
-      echo '        </DIV>';
-      echo '        <DIV class="grid-item-no-border grid-item-1">';
-      echo '            <P>Presione aceptar, este código expirará en: </P>';
-      echo '        </DIV>';
-      echo '        <DIV class="grid-item-no-border grid-item-1">';
-      echo '            <INPUT type="text" name="otpCode" id="otpCode" class="otpVeri">';
-      echo '        </DIV>';
-      echo '    </ASIDE>';
-      echo '</SECTION>';
-      echo '<section class="grid-section grid-row marginSect">';
-      echo '    <BUTTON class="button">Aceptar</BUTTON>';
-      echo '</section>';
-    }//buildTextArea
+  static function buildOtpContent()
+  {
+    echo '<SECTION class="marginSect">';
+    echo '    <ASIDE class="">';
+    echo '        <DIV class="grid-item-no-border ">';
+    echo '            <h1>OTP Verificación</h1>';
+    echo '        </DIV>';
+    echo '        <DIV class="grid-item-no-border grid-item-1">';
+    echo '            <P>Presione aceptar, este código expirará en: </P>';
+    echo '        </DIV>';
+    echo '        <DIV class="grid-item-no-border grid-item-1">';
+    echo '            <INPUT type="text" name="otpCode" id="otpCode" class="otpVeri">';
+    echo '        </DIV>';
+    echo '    </ASIDE>';
+    echo '</SECTION>';
+    echo '<section class="grid-section grid-row marginSect">';
+    echo '    <BUTTON class="button">Aceptar</BUTTON>';
+    echo '</section>';
+  } //buildTextArea
 
   // buildHead
 } // xpresentationLayer

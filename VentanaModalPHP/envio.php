@@ -42,13 +42,15 @@
         $data_json = $serviceCall->mgetcountryl();
         xpresentationLayer::buildSelectJson("País", "countryCommend", "countryCommend", $data_json, "", "selectValorforId('countryCommend/providerCommend', 'ajax.php?cond=mgetproviderl')");
        
-        xpresentationLayer::buildSelectJson("Proveedor", "providerCommend", "providerCommend", "", "", "");
+        xpresentationLayer::buildSelectJson("Proveedor", "providerCommend", "providerCommend", "", "", "selectValorforId('providerCommend/sendFormCommend', 'ajax.php?cond=mgetremitancetypel')");
 
-        $data_json = $serviceCall->mgetcurrencyl();
-        xpresentationLayer::buildSelectJson("Moneda", "currencyCommend", "CucurrencyrrencyCommend", $data_json, "", "");     
+        $data_json = $serviceCall->mgetcurrencyremitancel();
+        xpresentationLayer::buildSelectJson("Moneda", "currencyCommend", "currencyCommend", $data_json, "", "");     
         
+        
+        xpresentationLayer::buildSelectJson("Entrega", "sendFormCommend", "sendFormCommend", ""); 
+
         $data_json = $serviceCall->mgetclearencetypel();
-        xpresentationLayer::buildSelectJson("Entrega", "sendFormCommend", "sendFormCommend", $data_json, "", ""); 
         xpresentationLayer::buildSelectJson("Forma de pago", "paidFormCommend", "paidFormCommend", $data_json, "", "");     
 
         xpresentationLayer::endSection();        
@@ -95,10 +97,11 @@
         $data_json = $serviceCall->mgetcountryl();
         xpresentationLayer::buildSelectJson("País", "countryTransfer", "countryTransfer", $data_json);
 
-        $data_json = $serviceCall->mgetcurrencyl();
+        $data_json = $serviceCall->mgetcurrencytrl();
         xpresentationLayer::buildSelectJson("Moneda", "currencyTransfer", "currencyTransfer", $data_json, "", "");     
         
         $data_json = $serviceCall->mgetclearencetypel();
+        
         xpresentationLayer::buildSelectJson("Forma de pago", "paidFormTransfer", "paidFormTransfer", $data_json, "", "");     
         xpresentationLayer::buildInputTextDisable("Tasa de Cambio", "amountTransfer", "amountTransfer", "0.00");
         xpresentationLayer::buildInputTextDisable("Monto Bs", "countryTransfer", "countryTransfer", "0.00");

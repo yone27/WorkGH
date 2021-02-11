@@ -160,6 +160,7 @@ async function selectValorforId(srcdst, url) {
         let idValue = document.getElementById(src[index]);
         if (dst != "codeArea") {
             value = idValue.options[idValue.selectedIndex].value;
+            
         }
         else {
             value = idValue.options[idValue.selectedIndex].text;
@@ -168,8 +169,9 @@ async function selectValorforId(srcdst, url) {
     }
 
     const data = await fetch(`${url}${values}`, { method: "GET" });
+    console.log(data);
     const rest = await data.json();
-
+    
     let output = "<option disabled selected>Seleccione</option>';";
     rest.list.forEach(element => {
         if (element.iso != null) {

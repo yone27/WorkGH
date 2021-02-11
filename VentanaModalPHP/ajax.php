@@ -29,6 +29,13 @@ if (isset($_GET["cond"])) {
         $data_json = $client->mgetcurrencydstl($_GET["valor0"], $_GET["valor1"], $_GET["valor2"]);
         print_r(json_encode($data_json));
     }
+
+    if ($_GET["cond"] == "mgetremitancetypel") {
+        $data_json = $client->mgetremitancetypel($_GET["valor0"]);
+        print_r(json_encode($data_json));
+    }
+
+
 }
 
 if (isset($_POST["cond"])) {
